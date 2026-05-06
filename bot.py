@@ -186,7 +186,7 @@ LECTURE_FILE_IDS = {
     "first_stage_second_course_Computer Sciences_نظري_2": [
         "BQACAgIAAxkBAAEpAQ1p-2QxGFmkOW6YU1_qRLzLOyWROQACb6UAAoax2Etn5hHLPK_VCjsE",
         "BQACAgIAAxkBAAEpAQxp-2Qx1G7p8UxUc7-H5rw3-MIi-AACbqUAAoax2Ev5xLOMfMTA2jsE",
-        "BQACAgIAAQtp-2QxExcR1hnnFN4bVnNmPE9s5QACcKUAAoax2EseCaNRxlzzPjsE"
+        "BQACAgIAAxkBAAEpAQtp-2QxExcR1hnnFN4bVnNmPE9s5QACcKUAAoax2EseCaNRxlzzPjsE"
     ],
     "first_stage_second_course_Physiology_نظري_1": "BQACAgIAAxkBAAEpARFp-2SFWqDMS-QqTVqDrOM-iNB5LwACcaUAAoax2EsRf56BCMMH0DsE",
     "first_stage_second_course_Physiology_نظري_2": "BQACAgIAAxkBAAEpARNp-2SnUdC9qutO7zqNYNHElE4obAACcqUAAoax2EsyBJWB-kz1iTsE",
