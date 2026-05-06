@@ -2,6 +2,8 @@ import logging
 import os
 import re
 import asyncio
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import (
     ApplicationBuilder,
@@ -16,6 +18,19 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO,
 )
+
+# ========== خادم وهمي لإشباع فحص المنفذ في Render ==========
+class FakeHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Bot is running')
+
+def start_fake_server():
+    port = int(os.environ.get('PORT', 5000))
+    server = HTTPServer(('0.0.0.0', port), FakeHandler)
+    logging.info(f'Fake server running on port {port}')
+    server.serve_forever()
 
 # =========================================================
 #  قاعدة معرفات الملفات الموحّدة (الكورس الأول والثاني)
@@ -190,7 +205,7 @@ LECTURE_FILE_IDS = {
     "first_stage_second_course_Physiology_عملي_5": "BQACAgIAAxkBAAEpAS1p-2XCQlxgvD2e_tryOR4Lc4pcKAACfqUAAoax2EvYnDk9VHgqKzsE"
 }
 
-# مواد لا يوجد بها قسم عملي (يتم التوجه مباشرة للنظري)
+# مواد لا يوجد بها قسم عملي
 MATERIALS_NO_PRACTICAL = [
     "⚖️ حقوق الإنسان ⚖️",
     "📈 Biostatistics 📈",
@@ -226,10 +241,6 @@ def build_course_keyboard(course_location: str) -> list:
         ]
 
 def get_available_lecture_numbers(material_key_base: str) -> list:
-    """
-    استخرج أرقام المحاضرات المتاحة من قاموس المعرفات لمادة معينة.
-    material_key_base مثل: 'first_stage_first_course_Analytical Chemistry_نظري'
-    """
     numbers = []
     prefix = material_key_base + "_"
     for key in LECTURE_FILE_IDS:
@@ -250,15 +261,16 @@ def build_lecture_keyboard(numbers: list) -> list:
     keyboard.append(["🔝 القائمة الرئيسية"])
     return keyboard
 
-async def send_files_by_ids(update: Update, context: ContextTypes.DEFAULT_TYPE, file_ids):
-    """إرسال الملفات باستخدام معرفاتها من تيليجرام."""
+async def send_files_by_ids(update: Update, context: ContextTypes.DEFAULT_TYPE, file_ids, caption: str = ""):
+    """إرسال الملفات باستخدام معرفاتها من تيليجرام، مع وصف."""
     if isinstance(file_ids, str):
         file_ids = [file_ids]
     for fid in file_ids:
         try:
             await context.bot.send_document(
                 chat_id=update.effective_chat.id,
-                document=fid
+                document=fid,
+                caption=caption if caption else None
             )
         except Exception as e:
             logging.error(f"خطأ في إرسال الملف {fid}: {e}", exc_info=True)
@@ -339,7 +351,6 @@ async def handle_material_menu(update: Update, context: ContextTypes.DEFAULT_TYP
     clean_name = clean_material_name(text)
 
     if text in MATERIALS_NO_PRACTICAL:
-        # مواد بدون عملي
         context.user_data['last_section'] = "📖 نظري"
         context.user_data['skip_section_menu'] = True
         material_base = f"{course_prefix}_{clean_name}_نظري"
@@ -392,7 +403,8 @@ async def handle_section_menu(update: Update, context: ContextTypes.DEFAULT_TYPE
         key = f"{course_prefix}_{clean_name}_مصادر"
         file_ids = LECTURE_FILE_IDS.get(key)
         if file_ids:
-            await send_files_by_ids(update, context, file_ids)
+            caption = f"📚 {material_name_raw} - مصادر"
+            await send_files_by_ids(update, context, file_ids, caption)
         else:
             await update.message.reply_text("📭 لا توجد مصادر مرفقة لهذه المادة.")
         return
@@ -445,7 +457,8 @@ async def handle_lecture_number(update: Update, context: ContextTypes.DEFAULT_TY
     file_ids = LECTURE_FILE_IDS.get(key)
 
     if file_ids:
-        await send_files_by_ids(update, context, file_ids)
+        caption = f"{material_name_raw} - {current_section_raw} - محاضرة {text}"
+        await send_files_by_ids(update, context, file_ids, caption)
     else:
         await update.message.reply_text("❌ المحاضرة غير متوفرة حالياً. تأكد من الرقم.")
 
@@ -465,7 +478,11 @@ async def main_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await start(update, context)
 
 def main():
-    TOKEN = os.environ.get("BOT_TOKEN", "8775418806:AAEoYvujCfTnJLxkFnQnY9k4w9iyfHJ7LA4")  # ⚠️ استخدم متغير البيئة في النشر
+    TOKEN = os.environ.get("BOT_TOKEN", "8775418806:AAEoYvujCfTnJLxkFnQnY9k4w9iyfHJ7LA4")
+    
+    # بدء الخادم الوهمي في خيط منفصل
+    threading.Thread(target=start_fake_server, daemon=True).start()
+    
     application = (
         ApplicationBuilder()
         .token(TOKEN)
