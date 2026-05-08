@@ -188,8 +188,14 @@ LECTURE_FILE_IDS = {
         "BQACAgIAAxkBAAEpAQxp-2Qx1G7p8UxUc7-H5rw3-MIi-AACbqUAAoax2Ev5xLOMfMTA2jsE",
         "BQACAgIAAxkBAAEpAQtp-2QxExcR1hnnFN4bVnNmPE9s5QACcKUAAoax2EseCaNRxlzzPjsE"
     ],
-    "first_stage_second_course_Physiology_نظري_1": "BQACAgIAAxkBAAEpARFp-2SFWqDMS-QqTVqDrOM-iNB5LwACcaUAAoax2EsRf56BCMMH0DsE",
-    "first_stage_second_course_Physiology_نظري_2": "BQACAgIAAxkBAAEpARNp-2SnUdC9qutO7zqNYNHElE4obAACcqUAAoax2EsyBJWB-kz1iTsE",
+    "first_stage_second_course_Physiology_نظري_1": [
+    "BQACAgIAAxkBAAEpARFp-2SFWqDMS-QqTVqDrOM-iNB5LwACcaUAAoax2EsRf56BCMMH0DsE",
+    "BQACAgIAAxkBAAEpCNxp_bflmQ8pqfyZsqLpa93Onuv9HQACNZ0AArIooEnGwdPzrSZ_5DsE"
+    ],
+    "first_stage_second_course_Physiology_نظري_2": [
+    "BQACAgIAAxkBAAEpARNp-2SnUdC9qutO7zqNYNHElE4obAACcqUAAoax2EsyBJWB-kz1iTsE",
+    "BQACAgIAAxkBAAEpCNtp_bflsj2aDE8fdpPGH8dRWecWTwACD5UAAl4wyEkVEKfEEARM3TsE"
+    ],
     "first_stage_second_course_Physiology_نظري_3": [
         "BQACAgIAAxkBAAEpARVp-2TA62g311tLSK4FuPeoh6dH-QACc6UAAoax2EtIMM6MocP1IzsE",
         "BQACAgIAAxkBAAEpARZp-2TAZL9V1KtfBmGgMF8qr5-0LgACdKUAAoax2EtgxgABdZovlSk7BA"
