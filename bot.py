@@ -201,11 +201,10 @@ LECTURE_FILE_IDS = {
     "first_stage_second_course_Physiology_عملي_1": "BQACAgIAAxkBAAEpASFp-2VLkaoal4K7WneLwciVF6olPQACeqUAAoax2EvVl1LJBUf0CTsE",
     "first_stage_second_course_Physiology_عملي_2": "BQACAgIAAxkBAAEpASNp-2Vl6w8Hl5JFgmWfJMXg84pUDwACe6UAAoax2EuhHHvUiIfa0jsE",
     "first_stage_second_course_Physiology_عملي_3": "BQACAgIAAxkBAAEpASVp-2WBk5eMOB25Fpc3syCzWhHO_QACfKUAAoax2EvZ993_f_w-nTsE",
-    "first_stage_second_course_Physiology_عملي_4": "BQACAgIAAxkBAAEpAStp-2We44tnqmzyj_rl-a7gFUFhpQACfaUAAoax2EuUMyi8YqZgqzsE"
-    
-"first_stage_second_course_Physiology_عملي_5": "BQACAgIAAxkBAAEpAS1p-2XCQlxgvD2e_tryOR4Lc4pcKAACfqUAAoax2EvYnDk9VHgqKzsE",
-
-"first_stage_second_course_Arabic Language_نظري_1": "BQACAgIAAxkBAAEpCJBp_aQmR1AQTgVqeT8af4ewPtxQVAACnqcAAkwe6EuTOS69bl-WZDsE",
+     "first_stage_second_course_Physiology_عملي_4": "BQACAgIAAxkBAAEpAStp-2We44tnqmzyj_rl-a7gFUFhpQACfaUAAoax2EuUMyi8YqZgqzsE",
+     "first_stage_second_course_Physiology_عملي_5": "BQACAgIAAxkBAAEpAS1p-2XCQlxgvD2e_tryOR4Lc4pcKAACfqUAAoax2EvYnDk9VHgqKzsE",
+     
+"first_stage_second_course_Arabic Language_نظري_1": "BQACAgIAAxkBAAEpCJBp_aQmR1AQTgVqeT8af4ewPtxQVAACnqcAAkwe6EuTOS69bl-WZDsE"
 }
 
 # مواد لا يوجد بها قسم عملي
