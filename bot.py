@@ -187,14 +187,26 @@ def build_lecture_keyboard(numbers: list) -> list:
     return keyboard
 
 async def send_files_by_ids(update, context, file_ids, caption=""):
+    """
+    ترسل ملفات مع الأخذ بالاعتبار الصيغتين:
+    - صيغة قديمة: قائمة نصوص (file_id فقط)
+    - صيغة جديدة: قائمة كائنات {'file_id': ..., 'caption': ...}
+    إذا كان العنصر dict استخدم caption المرفق معه، وإلا استخدم caption العام.
+    """
     if isinstance(file_ids, str):
         file_ids = [file_ids]
-    for fid in file_ids:
+    for item in file_ids:
         try:
+            if isinstance(item, dict):
+                fid = item.get("file_id")
+                cap = item.get("caption", "")
+            else:
+                fid = item
+                cap = caption  # وصف عام
             await context.bot.send_document(
                 chat_id=update.effective_chat.id,
                 document=fid,
-                caption=caption if caption else None,
+                caption=cap if cap else None,
             )
         except Exception as e:
             logging.error(f"خطأ في إرسال {fid}: {e}")
@@ -227,7 +239,6 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     msg = f"👥 عدد المستخدمين المسجلين: {count}\n\n"
-    # عرض أول 30 مستخدم مع التفاصيل
     for i, (uid, data) in enumerate(users.items()):
         if i >= 30:
             msg += f"\n... و {count - 30} مستخدم آخرون. استخدم /users للقائمة الكاملة."
@@ -257,7 +268,6 @@ async def users_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     text = "\n".join(lines)
 
-    # إذا كان النص طويلاً أرسله كملف
     if len(text) > 4000:
         file = io.BytesIO(text.encode("utf-8"))
         file.name = "users_list.txt"
@@ -266,7 +276,6 @@ async def users_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(text)
 
 # ========== معالجات القوائم ==========
-# (باقي الدوال كما هي دون تغيير)
 async def handle_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await register_user_if_new(update, context)
     text = update.message.text
@@ -431,7 +440,8 @@ async def handle_section_menu(update: Update, context: ContextTypes.DEFAULT_TYPE
         file_ids = LECTURE_FILE_IDS.get(key)
         if file_ids:
             display_mat = context.user_data.get("current_material_display", clean_mat)
-            await send_files_by_ids(update, context, file_ids, f"📚 {display_mat} - مصادر")
+            # استدعاء مع ذكر caption=
+            await send_files_by_ids(update, context, file_ids, caption=f"📚 {display_mat} - مصادر")
         else:
             await update.message.reply_text("📭 لا توجد مصادر مرفقة.")
         return
@@ -489,8 +499,9 @@ async def handle_lecture_number(update: Update, context: ContextTypes.DEFAULT_TY
     display_mat = context.user_data.get("current_material_display", clean_mat)
 
     if file_ids:
+        # استدعاء مع caption= ليمرر كوصف عام للتنسيق القديم
         await send_files_by_ids(update, context, file_ids,
-                                f"{display_mat} - {last_section} - محاضرة {text}")
+                                caption=f"{display_mat} - {last_section} - محاضرة {text}")
     else:
         await update.message.reply_text("❌ المحاضرة غير متوفرة حالياً. تأكد من الرقم.")
 
@@ -525,7 +536,7 @@ def main():
     )
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("stats", stats))
-    app.add_handler(CommandHandler("users", users_list))   # الأمر الجديد
+    app.add_handler(CommandHandler("users", users_list))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, main_handler))
     print("✅ البوت يعمل...")
     app.run_polling()
