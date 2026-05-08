@@ -84,10 +84,18 @@ STAGE_DISPLAY = {
     "fifth_stage": "🟢 المرحلة الخامسة 🟢",
 }
 
-# عرض الكورسات (نولّدها تلقائياً باستثناء أسماء خاصة)
+# عرض الكورسات بالإيموجي المرغوب (تعديل 1)
+COURSE_DISPLAY = {
+    "first_course": "🟧 First course 🟧",
+    "second_course": "⬛ Second course ⬛",
+    # أضف بقية الكورسات بنفس النمط إن وجدت
+    "third_course": "🟫 Third course 🟫",
+    "fourth_course": "🟪 Fourth course 🟪",
+    "fifth_course": "🟩 Fifth course 🟩",
+}
+
 def course_display(course_key: str) -> str:
-    # يمكنك تخصيصه حسب رغبتك
-    return f"📘 {course_key.replace('_', ' ').title()} 📘"
+    return COURSE_DISPLAY.get(course_key, f"📘 {course_key.replace('_', ' ').title()} 📘")
 
 # عرض المواد (الربط بين الاسم النظيف والاسم المُزيّن بالإيموجي)
 MATERIAL_DISPLAY = {
@@ -147,7 +155,8 @@ def get_materials_in_course(stage: str, course: str) -> list:
             p = parse_key(key)
             if p and p["stage"] == stage and p["course"] == course:
                 materials.add(p["material"])
-    return sorted(materials)
+    # تعديل 3: ترتيب المواد تنازلياً حسب عدد الحروف (الأكبر فالأصغر)
+    return sorted(materials, key=lambda m: len(m), reverse=True)
 
 def material_has_practical(stage: str, course: str, material: str) -> bool:
     """هل توجد مفاتيح قسم عملي لهذه المادة؟"""
@@ -201,16 +210,14 @@ async def send_files_by_ids(update, context, file_ids, caption=""):
             await update.message.reply_text("⚠️ فشل إرسال أحد الملفات.")
 
 # ========== أوامر البوت ==========
-ADMIN_ID =1686696869  # <-- غيّره إلى معرفك
+ADMIN_ID = 1686696869  # <-- غيّره إلى معرفك
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await register_user_if_new(update, context)
     context.user_data.clear()
     context.user_data["state"] = "main_menu"
-    stages = get_all_stages()
-    if not stages:
-        await update.message.reply_text("لا توجد أي مراحل بعد!")
-        return
+    # تعديل 2: عرض جميع المراحل الخمسة دائماً
+    stages = ["first_stage", "second_stage", "third_stage", "fourth_stage", "fifth_stage"]
     keyboard = []
     for s in stages:
         display = STAGE_DISPLAY.get(s, s)
