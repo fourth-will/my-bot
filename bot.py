@@ -2,7 +2,6 @@ import logging
 import os
 import re
 import json
-import asyncio
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from telegram import Update, ReplyKeyboardMarkup
@@ -20,19 +19,49 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
-# ========== تحميل معرفات الملفات من ملف JSON خارجي ==========
+# ========== تحميل معرفات الملفات ==========
 try:
     with open("lecture_file_ids.json", "r", encoding="utf-8") as f:
         LECTURE_FILE_IDS = json.load(f)
-    logging.info("تم تحميل معرفات الملفات من lecture_file_ids.json بنجاح.")
+    logging.info("تم تحميل lecture_file_ids.json بنجاح.")
 except FileNotFoundError:
-    logging.error("ملف lecture_file_ids.json غير موجود! تأكد من وجوده في مجلد المشروع.")
+    logging.error("ملف lecture_file_ids.json غير موجود!")
     LECTURE_FILE_IDS = {}
 except json.JSONDecodeError:
-    logging.error("ملف lecture_file_ids.json يحتوي على أخطاء في صيغة JSON.")
+    logging.error("خطأ في صيغة lecture_file_ids.json")
     LECTURE_FILE_IDS = {}
 
-# ========== خادم وهمي لإشباع فحص المنفذ في Render ==========
+# ========== إدارة المستخدمين ==========
+USERS_FILE = "users.json"
+
+def load_users():
+    try:
+        with open(USERS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+def save_users(users):
+    with open(USERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(users, f, ensure_ascii=False, indent=2)
+
+async def register_user_if_new(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.effective_user
+    if not user:
+        return
+    users = load_users()
+    uid = str(user.id)
+    if uid not in users:
+        users[uid] = {
+            "user_id": user.id,
+            "first_name": user.first_name or "",
+            "username": user.username or "",
+            "chat_id": update.effective_chat.id,
+        }
+        save_users(users)
+        logging.info(f"مستخدم جديد: {user.id} - @{user.username or ''}")
+
+# ========== خادم وهمي لـ Render ==========
 class FakeHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -42,55 +71,111 @@ class FakeHandler(BaseHTTPRequestHandler):
 def start_fake_server():
     port = int(os.environ.get('PORT', 5000))
     server = HTTPServer(('0.0.0.0', port), FakeHandler)
-    logging.info(f'Fake server running on port {port}')
+    logging.info(f'Fake server on port {port}')
     server.serve_forever()
 
-# مواد لا يوجد بها قسم عملي
-MATERIALS_NO_PRACTICAL = [
-    "⚖️ حقوق الإنسان ⚖️",
-    "📈 Biostatistics 📈",
-    "📝 Terminology 📝",
-    "💻 Computer Sciences 💻",
-    "🗣️ Arabic Language 🗣️",
-]
+# ========== تعيينات الأسماء والعرض ==========
+# عرض المراحل (يُضاف إليها عند الحاجة)
+STAGE_DISPLAY = {
+    "first_stage": "🔴 المرحلة الأولى 🔴",
+    "second_stage": "🔵 المرحلة الثانية 🔵",
+    "third_stage": "🟠 المرحلة الثالثة 🟠",
+    "fourth_stage": "🟣 المرحلة الرابعة 🟣",
+    "fifth_stage": "🟢 المرحلة الخامسة 🟢",
+}
 
-def clean_material_name(raw_name: str) -> str:
-    """إزالة الرموز والإيموجي من اسم المادة ليطابق المفاتيح في القاموس."""
-    return re.sub(r'[^a-zA-Z0-9\s\u0621-\u064A]', '', raw_name).strip()
+# عرض الكورسات (نولّدها تلقائياً باستثناء أسماء خاصة)
+def course_display(course_key: str) -> str:
+    # يمكنك تخصيصه حسب رغبتك
+    return f"📘 {course_key.replace('_', ' ').title()} 📘"
 
-def build_course_keyboard(course_location: str) -> list:
-    if course_location == 'first_course':
-        return [
-            ["🧪 Analytical Chemistry 🧪"],
-            ["📊 Medical Physics 📊"],
-            ["⚖️ حقوق الإنسان ⚖️"],
-            ["📈 Biostatistics 📈"],
-            ["📝 Terminology 📝"],
-            ["🔬 Histology 🔬"],
-            ["🦴 Anatomy 🦴"],
-            ["⬅️ رجوع"]
-        ]
-    else:
-        return [
-            ["🧮 Pharmaceutical Calculations 🧮"],
-            ["⚛️ Organic Chemistry I ⚛️"],
-            ["💻 Computer Sciences 💻"],
-            ["🗣️ Arabic Language 🗣️"],
-            ["🧠 Physiology 🧠"],
-            ["⬅️ رجوع"]
-        ]
+# عرض المواد (الربط بين الاسم النظيف والاسم المُزيّن بالإيموجي)
+MATERIAL_DISPLAY = {
+    "Analytical Chemistry": "🧪 Analytical Chemistry 🧪",
+    "Medical Physics": "📊 Medical Physics 📊",
+    "حقوق الإنسان": "⚖️ حقوق الإنسان ⚖️",
+    "Biostatistics": "📈 Biostatistics 📈",
+    "Terminology": "📝 Terminology 📝",
+    "Histology": "🔬 Histology 🔬",
+    "Anatomy": "🦴 Anatomy 🦴",
+    "Pharmaceutical Calculations": "🧮 Pharmaceutical Calculations 🧮",
+    "Organic Chemistry I": "⚛️ Organic Chemistry I ⚛️",
+    "Computer Sciences": "💻 Computer Sciences 💻",
+    "Arabic Language": "🗣️ Arabic Language 🗣️",
+    "Physiology": "🧠 Physiology 🧠",
+}
 
-def get_available_lecture_numbers(material_key_base: str) -> list:
-    numbers = []
-    prefix = material_key_base + "_"
+# ========== دوال تحليل ملف المحاضرات ==========
+KEY_PATTERN = re.compile(
+    r'^(?P<stage>[a-z]+_stage)_'
+    r'(?P<course>[a-z]+_course)_'
+    r'(?P<material>.+?)_'
+    r'(?P<section>نظري|عملي|مصادر)'
+    r'(?:_(?P<number>\d+))?$'
+)
+
+def parse_key(key: str):
+    """استخراج أجزاء المفتاح: المرحلة، الكورس، المادة، القسم، الرقم."""
+    m = KEY_PATTERN.match(key)
+    if not m:
+        return None
+    return m.groupdict()
+
+def get_all_stages() -> list:
+    stages = set()
+    for key in LECTURE_FILE_IDS:
+        p = parse_key(key)
+        if p:
+            stages.add(p["stage"])
+    return sorted(stages)
+
+def get_courses_in_stage(stage: str) -> list:
+    prefix = stage + "_"
+    courses = set()
     for key in LECTURE_FILE_IDS:
         if key.startswith(prefix):
-            try:
-                num = int(key.split("_")[-1])
-                numbers.append(num)
-            except ValueError:
-                continue
+            p = parse_key(key)
+            if p and p["stage"] == stage:
+                courses.add(p["course"])
+    return sorted(courses)
+
+def get_materials_in_course(stage: str, course: str) -> list:
+    prefix = f"{stage}_{course}_"
+    materials = set()
+    for key in LECTURE_FILE_IDS:
+        if key.startswith(prefix):
+            p = parse_key(key)
+            if p and p["stage"] == stage and p["course"] == course:
+                materials.add(p["material"])
+    return sorted(materials)
+
+def material_has_practical(stage: str, course: str, material: str) -> bool:
+    """هل توجد مفاتيح قسم عملي لهذه المادة؟"""
+    prefix = f"{stage}_{course}_{material}_عملي"
+    for key in LECTURE_FILE_IDS:
+        if key.startswith(prefix):
+            return True
+    return False
+
+def get_available_lecture_numbers(stage_course_material_section_prefix: str) -> list:
+    """أرقام المحاضرات المتاحة لقسم معين."""
+    numbers = []
+    for key in LECTURE_FILE_IDS:
+        if key.startswith(stage_course_material_section_prefix):
+            p = parse_key(key)
+            if p and p["number"]:
+                numbers.append(int(p["number"]))
     return sorted(set(numbers))
+
+# ========== دوال مساعدة ==========
+def clean_material_name(raw: str) -> str:
+    """إزالة الرموز والإيموجي من اسم المادة للحصول على الاسم النظيف."""
+    return re.sub(r'[^a-zA-Z0-9\s\u0621-\u064A]', '', raw).strip()
+
+def display_to_clean(display_name: str) -> str:
+    """تحويل اسم المادة المعروض إلى الاسم النظيف باستخدام التنظيف."""
+    # أسلوب بسيط وفعّال لأن الإيموجي والرموز تُحذف
+    return clean_material_name(display_name)
 
 def build_lecture_keyboard(numbers: list) -> list:
     keyboard = []
@@ -101,8 +186,7 @@ def build_lecture_keyboard(numbers: list) -> list:
     keyboard.append(["🔝 القائمة الرئيسية"])
     return keyboard
 
-async def send_files_by_ids(update: Update, context: ContextTypes.DEFAULT_TYPE, file_ids, caption: str = ""):
-    """إرسال الملفات باستخدام معرفاتها من تيليجرام، مع وصف."""
+async def send_files_by_ids(update, context, file_ids, caption=""):
     if isinstance(file_ids, str):
         file_ids = [file_ids]
     for fid in file_ids:
@@ -110,175 +194,256 @@ async def send_files_by_ids(update: Update, context: ContextTypes.DEFAULT_TYPE, 
             await context.bot.send_document(
                 chat_id=update.effective_chat.id,
                 document=fid,
-                caption=caption if caption else None
+                caption=caption if caption else None,
             )
         except Exception as e:
-            logging.error(f"خطأ في إرسال الملف {fid}: {e}", exc_info=True)
-            await update.message.reply_text("⚠️ فشل إرسال أحد الملفات. تأكد من صلاحية المعرف.")
+            logging.error(f"خطأ في إرسال {fid}: {e}")
+            await update.message.reply_text("⚠️ فشل إرسال أحد الملفات.")
+
+# ========== أوامر البوت ==========
+ADMIN_ID =1686696869  # <-- غيّره إلى معرفك
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data['state'] = 'main_menu'
-    context.user_data.pop('skip_section_menu', None)
-    reply_keyboard = [
-        ["🔴 المرحلة الأولى 🔴"],
-        ["🔵 المرحلة الثانية 🔵"],
-        ["🟠 المرحلة الثالثة 🟠"],
-        ["🟣 المرحلة الرابعة 🟣"],
-        ["🟢 المرحلة الخامسة 🟢"],
-    ]
-    reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+    await register_user_if_new(update, context)
+    context.user_data.clear()
+    context.user_data["state"] = "main_menu"
+    stages = get_all_stages()
+    if not stages:
+        await update.message.reply_text("لا توجد أي مراحل بعد!")
+        return
+    keyboard = []
+    for s in stages:
+        display = STAGE_DISPLAY.get(s, s)
+        keyboard.append([display])
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text("🔝 القائمة الرئيسية", reply_markup=reply_markup)
 
+async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_ID:
+        await update.message.reply_text("🚫 للمشرف فقط.")
+        return
+    users = load_users()
+    count = len(users)
+    if count == 0:
+        await update.message.reply_text("لا يوجد مستخدمون بعد.")
+        return
+    msg = f"👥 عدد المستخدمين المسجلين: {count}\n\n"
+    # msg += "\n".join([f"• {d['first_name']} (ID:{uid})" for uid,d in users.items()])
+    await update.message.reply_text(msg)
+
+# ========== معالجات القوائم ==========
 async def handle_main_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await register_user_if_new(update, context)
     text = update.message.text
-    if "الأولى" in text:
-        context.user_data['current_stage'] = 'first_stage'
-        context.user_data['state'] = 'course_menu'
-        reply_keyboard = [
-            ["🟧 First course 🟧"],
-            ["⬛ Second course ⬛"],
-            ["⬅️ رجوع إلى المراحل"]
-        ]
-        reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
-        await update.message.reply_text(text, reply_markup=reply_markup)
-    else:
-        await update.message.reply_text("قريباً، جاري إضافة باقي المراحل.")
+    # ابحث عن المرحلة المختارة من خلال نص الزر
+    chosen_stage = None
+    for stage_key, display in STAGE_DISPLAY.items():
+        if text == display:
+            chosen_stage = stage_key
+            break
+    if not chosen_stage:
+        await update.message.reply_text("الرجاء اختيار مرحلة موجودة.")
         await start(update, context)
+        return
+
+    context.user_data["current_stage"] = chosen_stage
+    courses = get_courses_in_stage(chosen_stage)
+    if not courses:
+        await update.message.reply_text("لا توجد كورسات مضافة لهذه المرحلة بعد.")
+        await start(update, context)
+        return
+    keyboard = []
+    for c in courses:
+        keyboard.append([course_display(c)])
+    keyboard.append(["⬅️ رجوع إلى المراحل"])
+    context.user_data["state"] = "course_menu"
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+    await update.message.reply_text(text, reply_markup=reply_markup)
 
 async def handle_course_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await register_user_if_new(update, context)
     text = update.message.text
-    if "First course" in text:
-        context.user_data['current_location'] = 'first_course'
-        context.user_data['state'] = 'material_menu'
-        reply_keyboard = build_course_keyboard('first_course')
-        reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
-        await update.message.reply_text(text, reply_markup=reply_markup)
-    elif "Second course" in text:
-        context.user_data['current_location'] = 'second_course'
-        context.user_data['state'] = 'material_menu'
-        reply_keyboard = build_course_keyboard('second_course')
-        reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
-        await update.message.reply_text(text, reply_markup=reply_markup)
-    elif "رجوع" in text:
+    if "رجوع" in text:
         await start(update, context)
-    else:
-        await update.message.reply_text("الرجاء اختيار أحد الكورسات المتاحة.")
+        return
+    current_stage = context.user_data.get("current_stage")
+    if not current_stage:
+        await start(update, context)
+        return
+    courses = get_courses_in_stage(current_stage)
+    chosen_course = None
+    for c in courses:
+        if course_display(c) == text:
+            chosen_course = c
+            break
+    if not chosen_course:
+        await update.message.reply_text("الرجاء اختيار كورس موجود.")
+        # إعادة عرض الكورسات
+        keyboard = [[course_display(c)] for c in courses] + [["⬅️ رجوع إلى المراحل"]]
+        reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+        await update.message.reply_text("اختر كورس:", reply_markup=reply_markup)
+        return
+
+    context.user_data["current_course"] = chosen_course
+    materials = get_materials_in_course(current_stage, chosen_course)
+    if not materials:
+        await update.message.reply_text("لا توجد مواد مضافة لهذا الكورس.")
+        # رجوع
+        return
+
+    keyboard = []
+    for mat in materials:
+        display = MATERIAL_DISPLAY.get(mat, mat)
+        keyboard.append([display])
+    keyboard.append(["⬅️ رجوع"])
+    context.user_data["state"] = "material_menu"
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+    await update.message.reply_text(text, reply_markup=reply_markup)
 
 async def handle_material_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await register_user_if_new(update, context)
     text = update.message.text
-
     if "رجوع" in text:
-        current_stage = context.user_data.get('current_stage', 'first_stage')
-        context.user_data['state'] = 'course_menu'
-        if current_stage == 'first_stage':
-            reply_keyboard = [
-                ["🟧 First course 🟧"],
-                ["⬛ Second course ⬛"],
-                ["⬅️ رجوع إلى المراحل"]
-            ]
+        # العودة إلى قائمة الكورسات
+        current_stage = context.user_data.get("current_stage")
+        if current_stage:
+            courses = get_courses_in_stage(current_stage)
+            keyboard = [[course_display(c)] for c in courses] + [["⬅️ رجوع إلى المراحل"]]
+            context.user_data["state"] = "course_menu"
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+            await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
+            return
         else:
-            reply_keyboard = [
-                ["🟧 First course 🟧"],
-                ["⬅️ رجوع إلى المراحل"]
-            ]
-        reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
-        await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
+            await start(update, context)
+            return
+
+    current_stage = context.user_data.get("current_stage")
+    current_course = context.user_data.get("current_course")
+    if not current_stage or not current_course:
+        await start(update, context)
         return
 
-    context.user_data['current_material'] = text
-    course_location = context.user_data.get('current_location', 'first_course')
-    course_prefix = "first_stage_first_course" if course_location == 'first_course' else "first_stage_second_course"
-    clean_name = clean_material_name(text)
+    # تحديد الاسم النظيف للمادة
+    clean_mat = display_to_clean(text)
+    # التحقق من وجود المادة فعلاً
+    materials = get_materials_in_course(current_stage, current_course)
+    if clean_mat not in materials:
+        await update.message.reply_text("المادة غير موجودة.")
+        return
 
-    if text in MATERIALS_NO_PRACTICAL:
-        context.user_data['last_section'] = "📖 نظري"
-        context.user_data['skip_section_menu'] = True
-        material_base = f"{course_prefix}_{clean_name}_نظري"
-        numbers = get_available_lecture_numbers(material_base)
+    context.user_data["current_material_clean"] = clean_mat
+    context.user_data["current_material_display"] = text
+
+    # هل يوجد عملي؟
+    has_prac = material_has_practical(current_stage, current_course, clean_mat)
+
+    if not has_prac:
+        # الانتقال مباشرة إلى النظري
+        context.user_data["last_section"] = "📖 نظري"
+        context.user_data["skip_section_menu"] = True
+        prefix = f"{current_stage}_{current_course}_{clean_mat}_نظري"
+        numbers = get_available_lecture_numbers(prefix + "_")
         if numbers:
-            context.user_data['state'] = 'lecture_number_menu'
-            reply_keyboard = build_lecture_keyboard(numbers)
-            reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+            context.user_data["state"] = "lecture_number_menu"
+            keyboard = build_lecture_keyboard(numbers)
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
             await update.message.reply_text("📖 نظري", reply_markup=reply_markup)
         else:
-            await update.message.reply_text("لا توجد محاضرات متاحة لهذه المادة حالياً.")
+            await update.message.reply_text("لا توجد محاضرات متاحة حالياً.")
         return
 
-    context.user_data['skip_section_menu'] = False
-    context.user_data['state'] = 'section_menu'
-    reply_keyboard = [
+    # عرض قائمة الأقسام
+    context.user_data["skip_section_menu"] = False
+    keyboard = [
         ["📖 نظري"],
         ["🔬 عملي"],
         ["🔗 مصادر"],
-        ["⬅️ رجوع"]
+        ["⬅️ رجوع"],
     ]
-    reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+    context.user_data["state"] = "section_menu"
+    reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
     await update.message.reply_text(text, reply_markup=reply_markup)
 
 async def handle_section_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await register_user_if_new(update, context)
     text = update.message.text
-    if text == "📖 نظري" or text == "🔬 عملي":
-        context.user_data['last_section'] = text
-        material_name_raw = context.user_data.get('current_material', '')
-        course_location = context.user_data.get('current_location', 'first_course')
-        course_prefix = "first_stage_first_course" if course_location == 'first_course' else "first_stage_second_course"
-        clean_name = clean_material_name(material_name_raw)
+    current_stage = context.user_data.get("current_stage")
+    current_course = context.user_data.get("current_course")
+    clean_mat = context.user_data.get("current_material_clean")
+    if not all([current_stage, current_course, clean_mat]):
+        await start(update, context)
+        return
+
+    if text == "⬅️ رجوع":
+        # الرجوع إلى قائمة المواد
+        materials = get_materials_in_course(current_stage, current_course)
+        keyboard = []
+        for mat in materials:
+            display = MATERIAL_DISPLAY.get(mat, mat)
+            keyboard.append([display])
+        keyboard.append(["⬅️ رجوع"])
+        context.user_data["state"] = "material_menu"
+        reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
+        await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
+        return
+
+    if text in ["📖 نظري", "🔬 عملي"]:
         section = "نظري" if "نظري" in text else "عملي"
-        material_base = f"{course_prefix}_{clean_name}_{section}"
-        numbers = get_available_lecture_numbers(material_base)
+        context.user_data["last_section"] = text
+        prefix = f"{current_stage}_{current_course}_{clean_mat}_{section}"
+        numbers = get_available_lecture_numbers(prefix + "_")
         if numbers:
-            context.user_data['state'] = 'lecture_number_menu'
-            reply_keyboard = build_lecture_keyboard(numbers)
-            reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+            context.user_data["state"] = "lecture_number_menu"
+            keyboard = build_lecture_keyboard(numbers)
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
             await update.message.reply_text(text, reply_markup=reply_markup)
         else:
             await update.message.reply_text(f"لا توجد محاضرات في قسم {section} حالياً.")
         return
 
     elif text == "🔗 مصادر":
-        material_name_raw = context.user_data.get('current_material', '')
-        course_location = context.user_data.get('current_location', 'first_course')
-        course_prefix = "first_stage_first_course" if course_location == 'first_course' else "first_stage_second_course"
-        clean_name = clean_material_name(material_name_raw)
-        key = f"{course_prefix}_{clean_name}_مصادر"
+        key = f"{current_stage}_{current_course}_{clean_mat}_مصادر"
         file_ids = LECTURE_FILE_IDS.get(key)
         if file_ids:
-            caption = f"📚 {material_name_raw} - مصادر"
-            await send_files_by_ids(update, context, file_ids, caption)
+            display_mat = context.user_data.get("current_material_display", clean_mat)
+            await send_files_by_ids(update, context, file_ids, f"📚 {display_mat} - مصادر")
         else:
-            await update.message.reply_text("📭 لا توجد مصادر مرفقة لهذه المادة.")
+            await update.message.reply_text("📭 لا توجد مصادر مرفقة.")
         return
 
-    elif text == "⬅️ رجوع":
-        context.user_data['state'] = 'material_menu'
-        course_location = context.user_data.get('current_location', 'first_course')
-        reply_keyboard = build_course_keyboard(course_location)
-        reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
-        await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
     else:
-        await update.message.reply_text("الرجاء اختيار نظري أو عملي.")
+        await update.message.reply_text("الرجاء اختيار قسم صحيح.")
 
 async def handle_lecture_number(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await register_user_if_new(update, context)
     text = update.message.text
     if text == "⬅️ رجوع":
-        if context.user_data.get('skip_section_menu'):
-            context.user_data['state'] = 'material_menu'
-            course_location = context.user_data.get('current_location', 'first_course')
-            reply_keyboard = build_course_keyboard(course_location)
-            reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+        if context.user_data.get("skip_section_menu"):
+            # العودة إلى قائمة المواد
+            current_stage = context.user_data.get("current_stage")
+            current_course = context.user_data.get("current_course")
+            materials = get_materials_in_course(current_stage, current_course)
+            keyboard = []
+            for mat in materials:
+                display = MATERIAL_DISPLAY.get(mat, mat)
+                keyboard.append([display])
+            keyboard.append(["⬅️ رجوع"])
+            context.user_data["state"] = "material_menu"
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
             await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
         else:
-            context.user_data['state'] = 'section_menu'
-            reply_keyboard = [
+            context.user_data["state"] = "section_menu"
+            keyboard = [
                 ["📖 نظري"],
                 ["🔬 عملي"],
                 ["🔗 مصادر"],
-                ["⬅️ رجوع"]
+                ["⬅️ رجوع"],
             ]
-            reply_markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True, one_time_keyboard=False)
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True, one_time_keyboard=False)
             await update.message.reply_text("تم الرجوع.", reply_markup=reply_markup)
         return
-    elif text == "🔝 القائمة الرئيسية":
+
+    if text == "🔝 القائمة الرئيسية":
         await start(update, context)
         return
 
@@ -286,58 +451,59 @@ async def handle_lecture_number(update: Update, context: ContextTypes.DEFAULT_TY
         await update.message.reply_text("الرجاء اختيار رقم محاضرة صحيح.")
         return
 
-    material_name_raw = context.user_data.get('current_material', '')
-    course_location = context.user_data.get('current_location', 'first_course')
-    current_section_raw = context.user_data.get('last_section', '📖 نظري')
-    course_prefix = "first_stage_first_course" if course_location == 'first_course' else "first_stage_second_course"
-    clean_name = clean_material_name(material_name_raw)
-    section = "عملي" if "عملي" in current_section_raw else "نظري"
+    current_stage = context.user_data.get("current_stage")
+    current_course = context.user_data.get("current_course")
+    clean_mat = context.user_data.get("current_material_clean")
+    last_section = context.user_data.get("last_section", "📖 نظري")
+    section = "عملي" if "عملي" in last_section else "نظري"
+    if not all([current_stage, current_course, clean_mat]):
+        await start(update, context)
+        return
 
-    key = f"{course_prefix}_{clean_name}_{section}_{text}"
+    key = f"{current_stage}_{current_course}_{clean_mat}_{section}_{text}"
     file_ids = LECTURE_FILE_IDS.get(key)
+    display_mat = context.user_data.get("current_material_display", clean_mat)
 
     if file_ids:
-        caption = f"{material_name_raw} - {current_section_raw} - محاضرة {text}"
-        await send_files_by_ids(update, context, file_ids, caption)
+        await send_files_by_ids(update, context, file_ids,
+                                f"{display_mat} - {last_section} - محاضرة {text}")
     else:
         await update.message.reply_text("❌ المحاضرة غير متوفرة حالياً. تأكد من الرقم.")
 
 async def main_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    state = context.user_data.get('state', 'main_menu')
-    if state == 'main_menu':
+    await register_user_if_new(update, context)
+    state = context.user_data.get("state", "main_menu")
+    if state == "main_menu":
         await handle_main_menu(update, context)
-    elif state == 'course_menu':
+    elif state == "course_menu":
         await handle_course_menu(update, context)
-    elif state == 'material_menu':
+    elif state == "material_menu":
         await handle_material_menu(update, context)
-    elif state == 'section_menu':
+    elif state == "section_menu":
         await handle_section_menu(update, context)
-    elif state == 'lecture_number_menu':
+    elif state == "lecture_number_menu":
         await handle_lecture_number(update, context)
     else:
         await start(update, context)
 
 def main():
-    # الحصول على التوكن من متغير البيئة فقط (بدون قيمة افتراضية مكشوفة)
     TOKEN = os.environ.get("BOT_TOKEN")
     if not TOKEN:
-        logging.critical("BOT_TOKEN غير مضبوط في متغيرات البيئة!")
-        raise RuntimeError("BOT_TOKEN environment variable is required.")
-
-    # بدء الخادم الوهمي في خيط منفصل
+        logging.critical("BOT_TOKEN غير مضبوط!")
+        raise RuntimeError("BOT_TOKEN environment variable required.")
     threading.Thread(target=start_fake_server, daemon=True).start()
-
-    application = (
+    app = (
         ApplicationBuilder()
         .token(TOKEN)
         .connect_timeout(120)
         .read_timeout(120)
         .build()
     )
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, main_handler))
-    print("Bot is running...")
-    application.run_polling()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("stats", stats))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, main_handler))
+    print("✅ البوت يعمل...")
+    app.run_polling()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
