@@ -164,10 +164,25 @@
   "first_stage_second_course_Physiology_نظري_5": "BQACAgIAAxkBAAEpARtp-2UB4FZbkTbI2RHvBy98Y0RDmAACd6UAAoax2EsXISw6-cHx1zsE",
   "first_stage_second_course_Physiology_نظري_6": "BQACAgIAAxkBAAEpAR1p-2UZIXgisTm4WztI6aqmmTjL0wACeKUAAoax2Es8bZZoGqQQWzsE",
   "first_stage_second_course_Physiology_نظري_7": "BQACAgIAAxkBAAEpAR9p-2Uz0drm8n3KUowrXVpIsPVTngACeaUAAoax2EvX4REqfq9_2TsE",
-  "first_stage_second_course_Physiology_عملي_1": "BQACAgIAAxkBAAEpASFp-2VLkaoal4K7WneLwciVF6olPQACeqUAAoax2EvVl1LJBUf0CTsE",
-  "first_stage_second_course_Physiology_عملي_2": "BQACAgIAAxkBAAEpASNp-2Vl6w8Hl5JFgmWfJMXg84pUDwACe6UAAoax2EuhHHvUiIfa0jsE",
+  "first_stage_second_course_Physiology_عملي_1": [
+    "BQACAgIAAxkBAAEpASFp-2VLkaoal4K7WneLwciVF6olPQACeqUAAoax2EvVl1LJBUf0CTsE",
+    "BQACAgIAAxkBAAEpChdp_fL-locKlkl4Fbk26dS9RGRBNAACZJoAAotD6Ukkyce0P5PFqDsE"
+  ],
+  "first_stage_second_course_Physiology_عملي_2": [
+    "BQACAgIAAxkBAAEpASNp-2Vl6w8Hl5JFgmWfJMXg84pUDwACe6UAAoax2EuhHHvUiIfa0jsE",
+    "BQACAgIAAxkBAAEpChtp_fVUhpnZPJBtmDxsyBzS7_C9rwAC65UAAkpb8UsxZJyP_JmHkjsE",
+    "BQACAgIAAxkBAAEpCh9p_fWpkuTceQQs9C4oGNLh0i7WywACtZsAAotD6UmdmEpsVbbmajsE"
+  ],
   "first_stage_second_course_Physiology_عملي_3": "BQACAgIAAxkBAAEpASVp-2WBk5eMOB25Fpc3syCzWhHO_QACfKUAAoax2EvZ993_f_w-nTsE",
-  "first_stage_second_course_Physiology_عملي_4": "BQACAgIAAxkBAAEpAStp-2We44tnqmzyj_rl-a7gFUFhpQACfaUAAoax2EuUMyi8YqZgqzsE",
-  "first_stage_second_course_Physiology_عملي_5": "BQACAgIAAxkBAAEpAS1p-2XCQlxgvD2e_tryOR4Lc4pcKAACfqUAAoax2EvYnDk9VHgqKzsE",
+  "first_stage_second_course_Physiology_عملي_4": [
+    "BQACAgIAAxkBAAEpAStp-2We44tnqmzyj_rl-a7gFUFhpQACfaUAAoax2EuUMyi8YqZgqzsE",
+    "BQACAgIAAxkBAAEpCiRp_fYjC9XahpdjGBbynSaDil6IGQACg58AAmiZ8UvZZ79Qw5IuAjsE",
+    "BQACAgIAAxkBAAEpCiNp_fYjgUJmsEmYyvBuryHkzylYWQAC2ZUAAkpb8UvNkWrYUztk3jsE"
+  ],
+  "first_stage_second_course_Physiology_عملي_5": [
+    "BQACAgIAAxkBAAEpAS1p-2XCQlxgvD2e_tryOR4Lc4pcKAACfqUAAoax2EvYnDk9VHgqKzsE",
+    "BQACAgIAAxkBAAEpCihp_fZjbcfadWXyTDuwFMGnttoRQwAChJ8AAmiZ8UvaCpvwGUE5izsE",
+    "BQACAgIAAxkBAAEpCidp_fZj7EM0umX69L74VbNqS3jVxwAC3ZUAAkpb8UvPsWxwUiBojzsE"
+  ],
   "first_stage_second_course_Arabic Language_نظري_1": "BQACAgIAAxkBAAEpCJBp_aQmR1AQTgVqeT8af4ewPtxQVAACnqcAAkwe6EuTOS69bl-WZDsE"
 }
