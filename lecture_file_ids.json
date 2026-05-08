@@ -80,90 +80,348 @@
   "first_stage_first_course_Anatomy_نظري_8": "BQACAgIAAxkBAAEpAAGZaftbU9EubuKdfCVHMf8wtOfgq1UAAhalAAKGsdhLyyVYOm6D-pY7BA",
   "first_stage_first_course_Anatomy_عملي_1": "BQACAgIAAxkBAAEpAAGbaftbdcf0EFe_5NIYeEDuz3xbHVcAAhelAAKGsdhLX_KsaajlpRs7BA",
   "first_stage_first_course_Anatomy_عملي_2": "BQACAgIAAxkBAAEpAAGdaftbj-1U6HpI1dPn6-g-iyp6TwMAAhmlAAKGsdhLTzIv4K0t88k7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_1": "BQACAgIAAxkBAAEpAAGlafte_HW_cc00H6VkQ-CqXGXQ5dkAAhqlAAKGsdhLo-2bNuiveYc7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_2": "BQACAgIAAxkBAAEpAAGnaftfMOISch6kj-RMzUk7mzuKSc8AAhulAAKGsdhLG7WqAtCQ_NM7BA",
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_1": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGlafte_HW_cc00H6VkQ-CqXGXQ5dkAAhqlAAKGsdhLo-2bNuiveYc7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 1\n🔰 Interpretation of Prescriptions and Medication Orders . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_2": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGnaftfMOISch6kj-RMzUk7mzuKSc8AAhulAAKGsdhLG7WqAtCQ_NM7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 2\n🔰 Selected Abbreviations, Acronyms , and Symbols Used In Prescriptions And Medication Orders . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Pharmaceutical Calculations_نظري_3": [
-    "BQACAgIAAxkBAAEpAAGpaftfS1B9xAa0n8VKVu4xvzrrqI8AAhylAAKGsdhLb5K5HiO2_-c7BA",
-    "BQACAgIAAxkBAAEpAAGqaftfS9jeJQFxiDYE8vFb_Z9elQ4AAh2lAAKGsdhLGGU6JPjHuKU7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGqaftfS9jeJQFxiDYE8vFb_Z9elQ4AAh2lAAKGsdhLGGU6JPjHuKU7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 3\n🔰 Density & Specific Gravity . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGpaftfS1B9xAa0n8VKVu4xvzrrqI8AAhylAAKGsdhLb5K5HiO2_-c7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Practice problems Lec 3\n🔰 Problems on calculation Lec 3 - assigment. \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_4": "BQACAgIAAxkBAAEpAAGtaftfeC5zMiuXIWMYmwI1Ft6xnOcAAh6lAAKGsdhL6yYRVwQLv847BA",
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_5": "BQACAgIAAxgBAAEpAAGvaftflH3u9xNyTCscn2vYkpp3zMYAAh-lAAKGsdhL38Y0mW4XEiM7BA",
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_4": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGtaftfeC5zMiuXIWMYmwI1Ft6xnOcAAh6lAAKGsdhL6yYRVwQLv847BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 4\n🔰 percent strength ,ratio strength and other expression of concentration . \n🎗️ د. روسن صبري  . \n🔁 الملف بصيغة بوربوينت ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpC_hp_mZTo7wp7w5Lk0FJqgrYmO-MGgACsqMAAmiZ8UvbmGO3C50wgjsE",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 4\n🔰 percent strength ,ratio strength and other expression of concentration . \n🎗️ د. روسن صبري  . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_5": [
+    {
+      "file_id": "BQACAgIAAxgBAAEpAAGvaftflH3u9xNyTCscn2vYkpp3zMYAAh-lAAKGsdhL38Y0mW4XEiM7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 5\n🔰 Altering Product Strength, Use of Stock Solutions, and Problem-Solving by Alligation . \n🎗️ د. روسن صبري  . \n🔁 الملف بصيغة بوربوينت ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpC_5p_mhiJ8rkIWrdos5IUe2IzZadmQACtKMAAmiZ8Uv0ZR6epfuBEzsE",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 5\n🔰 Altering Product Strength, Use of Stock Solutions, and Problem-Solving by Alligation . \n🎗️ د. روسن صبري  . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Pharmaceutical Calculations_نظري_6": [
-    "BQACAgIAAxkBAAEpAAGxaftfuEsqZ2wuQI25zqrkvE0hQnYAAiClAAKGsdhLrqUypGJ7j087BA",
-    "BQACAgIAAxkBAAEpAAGyaftfuPWMdruIOXQnw6gSF2CKdZcAAiGlAAKGsdhLWoAz_Qtt66I7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGxaftfuEsqZ2wuQI25zqrkvE0hQnYAAiClAAKGsdhLrqUypGJ7j087BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 6\n🔰 Calculation of Doses: General Considerations . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAGyaftfuPWMdruIOXQnw6gSF2CKdZcAAiGlAAKGsdhLWoAz_Qtt66I7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 6\n🔰 Calculation of Doses . \n🎗️ د. محمد صبار . \n🔁 الملف بصيغة pdf."
+    }
   ],
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_7": "BQACAgIAAxkBAAEpAAG3aftf5wimU81QI6YfvUBZ1hapQ00AAiOlAAKGsdhLx5UtgyVaiz47BA",
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_8": "BQACAgIAAxkBAAEpAAG5aftf_1V2b4GgIl_F42M2Mgb0xiQAAiSlAAKGsdhLoGn6wdxKzAU7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_نظري_9": "BQACAgIAAxkBAAEpAAG9aftgGprzRZVVOVTMsom2xc7MUJsAAiWlAAKGsdhLr5sT3XHFFr87BA",
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_1": "BQACAgIAAxkBAAEpAAG_aftgNi0b-unuF5WET2bsVFJ31Z8AAielAAKGsdhL_9ZQb0RH9kg7BA",
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_7": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAG3aftf5wimU81QI6YfvUBZ1hapQ00AAiOlAAKGsdhLx5UtgyVaiz47BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 7\n🔰 Calculation of Doses : Isotonic and buffer solutions. \n🎗️ د. محمد صبار . \n🔁 الملف بصيغة pdf."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_8": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAG5aftf_1V2b4GgIl_F42M2Mgb0xiQAAiSlAAKGsdhLoGn6wdxKzAU7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 8\n🔰 Intravenous Infusions, Parenteral Admixtures, and Rate-of-Flow Calculations . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_نظري_9": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAG9aftgGprzRZVVOVTMsom2xc7MUJsAAiWlAAKGsdhLr5sT3XHFFr87BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lec 9\n🔰 Electrolyte Solutions: Milliequivalents, Millimoles, and Milliosmoles . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_1": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAG_aftgNi0b-unuF5WET2bsVFJ31Z8AAielAAKGsdhL_9ZQb0RH9kg7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 1\n🔰 Prescription . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Pharmaceutical Calculations_عملي_2": [
-    "BQACAgIAAxkBAAEpAAHBaftgcn1w0UccB6F9CgtAQSrr_ToAAimlAAKGsdhLz8RNUmjyVkI7BA",
-    "BQACAgIAAxkBAAEpAAHCaftgcrdEWfXBPKzh0QmUpmQp6rgAAiilAAKGsdhLKR0_DBXNc-E7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHBaftgcn1w0UccB6F9CgtAQSrr_ToAAimlAAKGsdhLz8RNUmjyVkI7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 2\n🔰 Selected abbreviations & symbols . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHCaftgcrdEWfXBPKzh0QmUpmQp6rgAAiilAAKGsdhLKR0_DBXNc-E7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Solutions of (Lab1&Lab2) \n🔰 Answers of Questions . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    }
   ],
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_3": "BQACAgIAAxkBAAEpAAHHaftgoV_WcMwaqIKozP3Vse7ix9kAAiqlAAKGsdhLdZcjQSITHxw7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_4": "BQACAgIAAxkBAAEpAAHJaftguFOejespzqchNiAs3fkKqjUAAiylAAKGsdhL47BPk8A3Xm87BA",
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_5": "BQACAgIAAxkBAAEpAAHLaftg1QW_hFLPmAiVP4l5GmGuRA4AAi2lAAKGsdhL6EiwGgu5Fcc7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_6": "BQACAgIAAxkBAAEpAAHNaftg76Fx3nbQrSlRIp5pYaE7enMAAi6lAAKGsdhLvkBmIBXtTjI7BA",
-  "first_stage_second_course_Pharmaceutical Calculations_عملي_7": "BQACAgIAAxkBAAEpAAHPafthCC_8soNXASyrXqeA6beGGD0AAi-lAAKGsdhLxw6rq0gAAY_HOwQ",
-  "first_stage_second_course_Pharmaceutical Calculations_مصادر": "BQACAgIAAxkBAAEpATFp-2YEiGvvfpxwwJMTsiT9kWiJZAACAqIAAoax2EscQpcg141-YzsE",
-  "first_stage_second_course_Organic Chemistry I_نظري_1": "BQACAgIAAxkBAAEpAAHRafthMDu98fzuhivs8WlcI5YwIxMAAjClAAKGsdhLWq_xyeOfj507BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_2": "BQACAgIAAxkBAAEpAAHTafthXJR8P-OWe_NL9PzTAAFh4olBAAIxpQAChrHYSyIYDiWg-xMYOwQ",
-  "first_stage_second_course_Organic Chemistry I_نظري_3": "BQACAgIAAxkBAAEpAAHZafthe43WudD7XjgiPy_w_NMe2xwAAjKlAAKGsdhL0SVX6dFwGQM7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_4": "BQACAgIAAxkBAAEpAAHbafthl-iKQgjy1EAobhVan3Er7s0AAjOlAAKGsdhLJdfQ9P8iLto7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_5": "BQACAgIAAxkBAAEpAAHdafth83YcbClawSpn3T7y0I6rNtsAAjSlAAKGsdhLdiwSs1_xJ287BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_6": "BQACAgIAAxkBAAEpAAHfaftiCwiEkyZMHCTsFlsox7bYeDMAAjWlAAKGsdhLxo_VOm-p1FI7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_7": "BQACAgIAAxkBAAEpAAHhaftiI5hLWZ4xGCQ-W_SYd7O4IP0AAjalAAKGsdhLB-xjovsvPgU7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_8": "BQACAgIAAxkBAAEpAAHjaftiOrswNUD2dUaUGjZrnoqFNZUAAjelAAKGsdhLgj8527oNBOI7BA",
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_3": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHHaftgoV_WcMwaqIKozP3Vse7ix9kAAiqlAAKGsdhLdZcjQSITHxw7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 3\n🔰 Volume Measurment . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_4": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHJaftguFOejespzqchNiAs3fkKqjUAAiylAAKGsdhL47BPk8A3Xm87BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 4\n🔰 Preparation of simple solution . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_5": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHLaftg1QW_hFLPmAiVP4l5GmGuRA4AAi2lAAKGsdhL6EiwGgu5Fcc7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 5\n🔰 Preparation of Aromatic Waters . \n🎗️ د.  \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_6": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHNaftg76Fx3nbQrSlRIp5pYaE7enMAAi6lAAKGsdhLvkBmIBXtTjI7BA",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 6\n🔰 Reducing and enlarging the Formula calculation, Apllication on Gel Preparation . \n🎗️ د. أحمد شوقي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_عملي_7": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHPafthCC_8soNXASyrXqeA6beGGD0AAi-lAAKGsdhLxw6rq0gAAY_HOwQ",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Lab 7\n🔰 Percentage . \n🎗️ د. \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Pharmaceutical Calculations_مصادر": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpATFp-2YEiGvvfpxwwJMTsiT9kWiJZAACAqIAAoax2EscQpcg141-YzsE",
+      "caption": "💠 Pharmaceutical Calculations\n🔻 Pharmaceutical Calculations 13th Edition. \n🔰 Reference . \n🎗️ د. Howard C. Anse . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_1": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHRafthMDu98fzuhivs8WlcI5YwIxMAAjClAAKGsdhLWq_xyeOfj507BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 1\n🔰 Introduction to Organic chemistry.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_2": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHTafthXJR8P-OWe_NL9PzTAAFh4olBAAIxpQAChrHYSyIYDiWg-xMYOwQ",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 2\n🔰 Alkanes.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_3": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHZafthe43WudD7XjgiPy_w_NMe2xwAAjKlAAKGsdhL0SVX6dFwGQM7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 3\n🔰 Preparation of Alkane .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_4": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHbafthl-iKQgjy1EAobhVan3Er7s0AAjOlAAKGsdhLJdfQ9P8iLto7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 4\n🔰 Alkane Reactions .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_5": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHdafth83YcbClawSpn3T7y0I6rNtsAAjSlAAKGsdhLdiwSs1_xJ287BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 5\n🔰 Alkenes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_6": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHfaftiCwiEkyZMHCTsFlsox7bYeDMAAjWlAAKGsdhLxo_VOm-p1FI7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 6\n🔰 Preparation of Alkenes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_7": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHhaftiI5hLWZ4xGCQ-W_SYd7O4IP0AAjalAAKGsdhLB-xjovsvPgU7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 7\n🔰 Reaction of Alkenes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_8": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHjaftiOrswNUD2dUaUGjZrnoqFNZUAAjelAAKGsdhLgj8527oNBOI7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 8\n🔰 Alkynes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Organic Chemistry I_نظري_9": [
-    "BQACAgIAAxkBAAEpAAHmaftiU1kn2hy9OgABlpF6YHpsQQy-AAI4pQAChrHYS5mYHoFgXJLIOwQ",
-    "BQACAgIAAxkBAAEpAAHlaftiU23meR86OS5MSsEoqE6DjDoAAjmlAAKGsdhLJ4cswS6El6k7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHlaftiU23meR86OS5MSsEoqE6DjDoAAjmlAAKGsdhLJ4cswS6El6k7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 9\n🔰 Preparation of alkynes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHmaftiU1kn2hy9OgABlpF6YHpsQQy-AAI4pQAChrHYS5mYHoFgXJLIOwQ",
+      "caption": "💠 Organic Chemistry I\n🔻 MCQ (Lec1- Lec 10). \n🔰 MCQ for students .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
-  "first_stage_second_course_Organic Chemistry I_نظري_10": "BQACAgIAAxkBAAEpAAHpaftieZza1eIpB3YdTXsfiK9C9QkAAjqlAAKGsdhLw-wznAhMxwM7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_11": "BQACAgIAAxkBAAEpAAHraftikfQMyguIdzvb6-MQKvkSusgAAjulAAKGsdhL6WD26Y9vM5E7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_12": "BQACAgIAAxkBAAEpAAHtaftirh6jFpCrdpVHdAT01k3p7MkAAj2lAAKGsdhLuesTS6bws747BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_13": "BQACAgIAAxkBAAEpAAHvaftizSe4WE0r52LPKRCHD8fyDfIAAj6lAAKGsdhLSIbUx34ezdw7BA",
-  "first_stage_second_course_Organic Chemistry I_نظري_14": "BQACAgIAAxkBAAEpAAHxafti5eA1LZaZW8O1bmQy8Rok5VIAAj-lAAKGsdhLkEDLKxEcSUg7BA",
-  "first_stage_second_course_Organic Chemistry I_عملي_1": "BQACAgIAAxkBAAEpAAHzaftjBgiuKvSuMtT7DSmiOZ5j3VwAAmKlAAKGsdhLVCnDKz2UPXY7BA",
+  "first_stage_second_course_Organic Chemistry I_نظري_10": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHpaftieZza1eIpB3YdTXsfiK9C9QkAAjqlAAKGsdhLw-wznAhMxwM7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 10\n🔰 Reactions of Alkynes .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_11": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHraftikfQMyguIdzvb6-MQKvkSusgAAjulAAKGsdhL6WD26Y9vM5E7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 11\n🔰 Stereochemistry .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_12": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHtaftirh6jFpCrdpVHdAT01k3p7MkAAj2lAAKGsdhLuesTS6bws747BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 12\n🔰 Alcohols .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_13": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHvaftizSe4WE0r52LPKRCHD8fyDfIAAj6lAAKGsdhLSIbUx34ezdw7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 13\n🔰 Preparation of Alcohols .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_نظري_14": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHxafti5eA1LZaZW8O1bmQy8Rok5VIAAj-lAAKGsdhLkEDLKxEcSUg7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lec 14\n🔰 Cycloalkane .\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Organic Chemistry I_عملي_1": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAHzaftjBgiuKvSuMtT7DSmiOZ5j3VwAAmKlAAKGsdhLVCnDKz2UPXY7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 1\n🔰 Safety and Tools.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpC6dp_lMJup8ZvKLk0JsL6xQog9lFfQACeJoAAkRDeUn48SbpXpt4LzsE",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 1\n🔰 Safety and Tools.\n🎗️ د. أثير سعدي . \n🔁 الملف مُـعـدل ."
+    }
+  ],
   "first_stage_second_course_Organic Chemistry I_عملي_2": [
-    "BQACAgIAAxkBAAEpAAH2aftjJVOHZv5IP1IgjHeo0o0uW4EAAmOlAAKGsdhLRdKa9bnxvzE7BA",
-    "BQACAgIAAxkBAAEpAAH1aftjJZf6JZFI9hpFiPN0r2mVPDsAAmSlAAKGsdhLOtJGZNWjsFU7BA",
-    "BQACAgIAAxkBAAEpAAH3aftjJQcIO0mkkjglA5ptdCz6tTMAAmWlAAKGsdhLbUJIyHSbalA7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH3aftjJQcIO0mkkjglA5ptdCz6tTMAAmWlAAKGsdhLbUJIyHSbalA7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 2\n🔰 Melting Point Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH1aftjJZf6JZFI9hpFiPN0r2mVPDsAAmSlAAKGsdhLOtJGZNWjsFU7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 H.W -> Lab 2\n🔰 Melting Point Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH2aftjJVOHZv5IP1IgjHeo0o0uW4EAAmOlAAKGsdhLRdKa9bnxvzE7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Experiment form ->Lab 2\n🔰 Melting Point Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Organic Chemistry I_عملي_3": [
-    "BQACAgIAAxkBAAEpAAH7aftjY9mhBekqwXLOfnLS5E0MTacAAmalAAKGsdhLYY5hpzJ53bM7BA",
-    "BQACAgIAAxkBAAEpAAH8aftjY-zQuPcpEf09Pc2-DvFMXWUAAmelAAKGsdhL4Az1wTsTf2E7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH8aftjY-zQuPcpEf09Pc2-DvFMXWUAAmelAAKGsdhL4Az1wTsTf2E7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 3\n🔰 Boiling point Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH7aftjY9mhBekqwXLOfnLS5E0MTacAAmalAAKGsdhLYY5hpzJ53bM7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Experiment form -> Lab 3\n🔰 Boiling point Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Organic Chemistry I_عملي_4": [
-    "BQACAgIAAxkBAAEpAAH_aftjh_Sj6VlGuInLoa9KzpUHL4kAAmilAAKGsdhLxgcFfsB4iD87BA",
-    "BQACAgIAAxkBAAEpAQFp-2OHKeLqvQUPfrqBCIG0JnkXrQACaqUAAoax2Es3JW_ED5wCrzsE",
-    "BQACAgIAAxkBAAEpAQABaftjh6Eflr31DlfBhVmiZzFINtAAAmmlAAKGsdhL3BH2_dosLWE7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAAH_aftjh_Sj6VlGuInLoa9KzpUHL4kAAmilAAKGsdhLxgcFfsB4iD87BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 4\n🔰 Recrystallization Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQFp-2OHKeLqvQUPfrqBCIG0JnkXrQACaqUAAoax2Es3JW_ED5wCrzsE",
+      "caption": "💠 Organic Chemistry I\n🔻 H.W -> Lab 4\n🔰 Recrystallization Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQABaftjh6Eflr31DlfBhVmiZzFINtAAAmmlAAKGsdhL3BH2_dosLWE7BA",
+      "caption": "💠 Organic Chemistry I\n🔻 Experiment form ->Lab 4\n🔰 Recrystallization Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Organic Chemistry I_عملي_5": [
-    "BQACAgIAAxkBAAEpAQVp-2PGhd32rlpJ6tlxs_uAylCltwACbKUAAoax2EslbEVEuK4d-jsE",
-    "BQACAgIAAxkBAAEpAQZp-2PG9BP9JuXOkRExpIglnfzXVQACa6UAAoax2EvMMChA86TvZzsE"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQVp-2PGhd32rlpJ6tlxs_uAylCltwACbKUAAoax2EslbEVEuK4d-jsE",
+      "caption": "💠 Organic Chemistry I\n🔻 Lab 5\n🔰 Sublimation Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQZp-2PG9BP9JuXOkRExpIglnfzXVQACa6UAAoax2EvMMChA86TvZzsE",
+      "caption": "💠 Organic Chemistry I\n🔻 Experiment form ->Lab 5\n🔰 Sublimation Determination.\n🎗️ د. أثير سعدي . \n🔁 الملف بصيغة pdf ."
+    }
   ],
-  "first_stage_second_course_Computer Sciences_نظري_1": "BQACAgIAAxkBAAEpAQlp-2P5CZvV0ZkAAZsRjyS8TktmoH4AAm2lAAKGsdhLQ15DDdC2K6s7BA",
+  "first_stage_second_course_Computer Sciences_نظري_1": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQlp-2P5CZvV0ZkAAZsRjyS8TktmoH4AAm2lAAKGsdhLQ15DDdC2K6s7BA",
+      "caption": "💠 Computer Sciences\n🔻 Lec 1\n🔰 Introduction to Computer and Components, Types, Advantages & Disadvantages. \n🎗️ د. فاطمة يحيىٰ. \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Computer Sciences_نظري_2": [
-    "BQACAgIAAxkBAAEpAQ1p-2QxGFmkOW6YU1_qRLzLOyWROQACb6UAAoax2Etn5hHLPK_VCjsE",
-    "BQACAgIAAxkBAAEpAQxp-2Qx1G7p8UxUc7-H5rw3-MIi-AACbqUAAoax2Ev5xLOMfMTA2jsE",
-    "BQACAgIAAxkBAAEpAQtp-2QxExcR1hnnFN4bVnNmPE9s5QACcKUAAoax2EseCaNRxlzzPjsE"
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQtp-2QxExcR1hnnFN4bVnNmPE9s5QACcKUAAoax2EseCaNRxlzzPjsE",
+      "caption": "💠 Computer Sciences\n🔻 Lec 2\n🔰 Microsoft office, Microsoft office Word, Microsoft office PowerPoint Microsoft office Excel.\n🎗️ د. فاطمة يحيىٰ. \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQxp-2Qx1G7p8UxUc7-H5rw3-MIi-AACbqUAAoax2Ev5xLOMfMTA2jsE",
+      "caption": "💠 Computer Sciences\n🔻 MCQ + T&F \n🔰 MCQ-COMPUTER LAB. \n🎗️ د. فاطمة يحيىٰ. \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpAQ1p-2QxGFmkOW6YU1_qRLzLOyWROQACb6UAAoax2Etn5hHLPK_VCjsE",
+      "caption": "💠 Computer Sciences\n🔻 MCQ\n🔰 الأسئلة النموذجية لمادة مبادئ الحاسوب –م1- 2026\n🎗️ د. فاطمة يحيىٰ. \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Physiology_نظري_1": [
-    "BQACAgIAAxkBAAEpARFp-2SFWqDMS-QqTVqDrOM-iNB5LwACcaUAAoax2EsRf56BCMMH0DsE",
-    "BQACAgIAAxkBAAEpCNxp_bflmQ8pqfyZsqLpa93Onuv9HQACNZ0AArIooEnGwdPzrSZ_5DsE"
+    {
+      "file_id": "BQACAgIAAxkBAAEpARFp-2SFWqDMS-QqTVqDrOM-iNB5LwACcaUAAoax2EsRf56BCMMH0DsE",
+      "caption": "💠 Physiology\n🔻 Lec 1\n🔰 Introduction to Human Physiology.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpCNxp_bflmQ8pqfyZsqLpa93Onuv9HQACNZ0AArIooEnGwdPzrSZ_5DsE",
+      "caption": "💠 Physiology\n🔻 H.W - 1 - \n🔰 Introduction to Human Physiology.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Physiology_نظري_2": [
-    "BQACAgIAAxkBAAEpARNp-2SnUdC9qutO7zqNYNHElE4obAACcqUAAoax2EsyBJWB-kz1iTsE",
-    "BQACAgIAAxkBAAEpCNtp_bflsj2aDE8fdpPGH8dRWecWTwACD5UAAl4wyEkVEKfEEARM3TsE"
+    {
+      "file_id": "BQACAgIAAxkBAAEpARNp-2SnUdC9qutO7zqNYNHElE4obAACcqUAAoax2EsyBJWB-kz1iTsE",
+      "caption": "💠 Physiology\n🔻 Lec 2\n🔰 Transport of Substances through Cell Membranes.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpCNtp_bflsj2aDE8fdpPGH8dRWecWTwACD5UAAl4wyEkVEKfEEARM3TsE",
+      "caption": "💠 Physiology\n🔻 H.W - 2 - \n🔰 Transport of Substances through Cell Membranes.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
   ],
   "first_stage_second_course_Physiology_نظري_3": [
-    "BQACAgIAAxkBAAEpARVp-2TA62g311tLSK4FuPeoh6dH-QACc6UAAoax2EtIMM6MocP1IzsE",
-    "BQACAgIAAxkBAAEpARZp-2TAZL9V1KtfBmGgMF8qr5-0LgACdKUAAoax2EtgxgABdZovlSk7BA"
+    {
+      "file_id": "BQACAgIAAxkBAAEpARZp-2TAZL9V1KtfBmGgMF8qr5-0LgACdKUAAoax2EtgxgABdZovlSk7BA",
+      "caption": "💠 Physiology\n🔻 Lec 3\n🔰 Genetic Control of Protein Synthesis, Cell Function, and Cell Reproduction .\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    },
+    {
+      "file_id": "BQACAgIAAxkBAAEpARVp-2TA62g311tLSK4FuPeoh6dH-QACc6UAAoax2EtIMM6MocP1IzsE",
+      "caption": "💠 Physiology\n🔻 H.W - 3 - \n🔰 Genetic Control of Protein Synthesis, Cell Function, and Cell Reproduction .\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
   ],
-  "first_stage_second_course_Physiology_نظري_4": "BQACAgIAAxkBAAEpARlp-2TqWxBMJa6INQ5yIQAB5Olrsb0AAnalAAKGsdhLFE_shnVf6cY7BA",
-  "first_stage_second_course_Physiology_نظري_5": "BQACAgIAAxkBAAEpARtp-2UB4FZbkTbI2RHvBy98Y0RDmAACd6UAAoax2EsXISw6-cHx1zsE",
-  "first_stage_second_course_Physiology_نظري_6": "BQACAgIAAxkBAAEpAR1p-2UZIXgisTm4WztI6aqmmTjL0wACeKUAAoax2Es8bZZoGqQQWzsE",
-  "first_stage_second_course_Physiology_نظري_7": "BQACAgIAAxkBAAEpAR9p-2Uz0drm8n3KUowrXVpIsPVTngACeaUAAoax2EvX4REqfq9_2TsE",
+  "first_stage_second_course_Physiology_نظري_4": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpARlp-2TqWxBMJa6INQ5yIQAB5Olrsb0AAnalAAKGsdhLFE_shnVf6cY7BA",
+      "caption": "💠 Physiology\n🔻 Lec 4\n🔰 Cell Signaling in Physiology.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Physiology_نظري_5": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpARtp-2UB4FZbkTbI2RHvBy98Y0RDmAACd6UAAoax2EsXISw6-cHx1zsE",
+      "caption": "💠 Physiology\n🔻 Lec 5\n🔰 Excitable Tissues - Nerves.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Physiology_نظري_6": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAR1p-2UZIXgisTm4WztI6aqmmTjL0wACeKUAAoax2Es8bZZoGqQQWzsE",
+      "caption": "💠 Physiology\n🔻 Lec 6\n🔰 Excitable Tissues - Synapses.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
+  "first_stage_second_course_Physiology_نظري_7": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpAR9p-2Uz0drm8n3KUowrXVpIsPVTngACeaUAAoax2EvX4REqfq9_2TsE",
+      "caption": "💠 Physiology\n🔻 Lec 7\n🔰 Sympathetic and Parasympathetic Nervous System.\n🎗️ د. أحمد محمد السيد . \n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Physiology_عملي_1": [
     {
       "file_id": "BQACAgIAAxkBAAEpASFp-2VLkaoal4K7WneLwciVF6olPQACeqUAAoax2EvVl1LJBUf0CTsE",
@@ -188,7 +446,12 @@
       "caption": "💠 Physiology\n🔻 Lab 2\n🔰 Differentiation of White Blood Cells (WBCs)\n🎗️ د. \n🔁 الملف مُـعـدل ."
     }
   ],
-  "first_stage_second_course_Physiology_عملي_3": "BQACAgIAAxkBAAEpASVp-2WBk5eMOB25Fpc3syCzWhHO_QACfKUAAoax2EvZ993_f_w-nTsE",
+  "first_stage_second_course_Physiology_عملي_3": [
+    {
+      "file_id": "BQACAgIAAxkBAAEpASVp-2WBk5eMOB25Fpc3syCzWhHO_QACfKUAAoax2EvZ993_f_w-nTsE",
+      "caption": "💠 Physiology\n🔻 Lab 3\n🔰 Blood groups and blood types.\n🎗️ د. حنين عباس.\n🔁 الملف بصيغة pdf ."
+    }
+  ],
   "first_stage_second_course_Physiology_عملي_4": [
     {
       "file_id": "BQACAgIAAxkBAAEpAStp-2We44tnqmzyj_rl-a7gFUFhpQACfaUAAoax2EuUMyi8YqZgqzsE",
@@ -220,11 +483,11 @@
   "first_stage_second_course_Arabic Language_نظري_1": [
     {
       "file_id": "BQACAgIAAxkBAAEpCntp_gxDy1QS7DwKvF4rAybctX4dIAAC6p8AAvzD8Usso0J-kPb39DsE",
-      "caption": "💠 Arabic language \n🔻 Lec 1\n🔰 القواعد (الجملة االسمية والجملة الفعلية) \n🎗️ د. فلاح حسن. \n🔁 الملف بصيغة بوربوينت ."
+      "caption": "💠 Arabic language \n🔻 Lec 1\n🔰 القواعد (الجملة الأسمية والجملة الفعلية) \n🎗️ د. فلاح حسن. \n🔁 الملف بصيغة بوربوينت ."
     },
     {
       "file_id": "BQACAgIAAxkBAAEpCJBp_aQmR1AQTgVqeT8af4ewPtxQVAACnqcAAkwe6EuTOS69bl-WZDsE",
-      "caption": "💠 Arabic language \n🔻 Lec 1\n🔰 القواعد (الجملة االسمية والجملة الفعلية) \n🎗️ د. فلاح حسن. \n🔁 الملف بصيغة pdf ."
+      "caption": "💠 Arabic language \n🔻 Lec 1\n🔰 القواعد (الجملة الأسمية والجملة الفعلية) \n🎗️ د. فلاح حسن. \n🔁 الملف بصيغة pdf ."
     }
   ]
 }
